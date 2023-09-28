@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import { getContacts } from 'Redux/selectors';
 // import { Form } from './form/form';
 // import { nanoid } from 'nanoid';
 import { FilterCon } from './FilterContacts/FilterContacts';
@@ -13,7 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getContacts);
 
   useEffect(() => {
     localStorage.setItem('contactList', JSON.stringify(contacts));
@@ -22,7 +22,6 @@ export const App = () => {
   return (
     <Layout>
       <Title>PHONEBOOK</Title>
-
       <FormFormik />
       <TitleBook>CONTACTS</TitleBook>
       <FilterCon />

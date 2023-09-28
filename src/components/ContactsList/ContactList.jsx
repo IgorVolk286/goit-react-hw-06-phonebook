@@ -1,13 +1,12 @@
-// import { useMemo } from 'react';
-// import PropTypes from 'prop-types';
+import { getContacts, getFilter } from 'Redux/selectors';
 import { List, ListItem, Text, ButtonDelete } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const ContactList = () => {
-  const filter = useSelector(state => state.filter);
-  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(getFilter);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  console.log(contacts);
+  console.log(filter);
 
   const deleteCont = id => {
     return {
@@ -19,13 +18,6 @@ export const ContactList = () => {
   const visibleContact = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
   );
-
-  // const visibleContact = useMemo(() => {
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filter.toLowerCase())
-  //   );
-  // }, [filter, contacts]);
-  console.log(visibleContact);
 
   return (
     <List>
