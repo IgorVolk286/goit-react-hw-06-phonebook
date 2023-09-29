@@ -1,10 +1,9 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 import { Formik } from 'formik';
-import { toast } from 'react-toastify';
-import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'Redux/selectors';
-// import PropTypes from 'prop-types';
+// import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { addContact } from '../../Redux/Contactsslice';
 import {
   TitleInput,
   AddButton,
@@ -38,22 +37,6 @@ let FormikSchema = Yup.object().shape({
 export const FormFormik = () => {
   const dispatch = useDispatch();
 
-  const contacts = useSelector(getContacts);
-  console.log(contacts);
-  const addContact = ({ name, number }) => {
-    if (contacts.some(cont => cont.name === name)) {
-      return toast.warn(`${name} is already in contacts`);
-    }
-    return {
-      type: 'contacts/addcontact',
-      payload: {
-        id: nanoid(),
-        name,
-        number,
-      },
-    };
-  };
-
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
@@ -85,3 +68,19 @@ export const FormFormik = () => {
     </Formik>
   );
 };
+
+/// єкшин для редаск\\\\
+
+// const addContact = ({ name, number }) => {
+//   if (contacts.some(cont => cont.name === name)) {
+//     return toast.warn(`${name} is already in contacts`);
+//   }
+//   return {
+//     type: 'contacts/addcontact',
+//     payload: {
+//       id: nanoid(),
+//       name,
+//       number,
+//     },
+//   };
+// };

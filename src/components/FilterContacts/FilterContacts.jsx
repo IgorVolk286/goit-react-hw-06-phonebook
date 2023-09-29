@@ -1,23 +1,15 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
-import { getFilter } from 'Redux/selectors';
 import { LabelFilterContact, InputFilter } from './FilterContacts.styled';
 import { useSelector, useDispatch } from 'react-redux';
+import { actual, getFilter } from '../../Redux/Filterslice';
 
 export const FilterCon = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
+  console.log(filter);
 
-  const filterActual = event => {
-    return {
-      type: 'filter/actual',
-      payload: event.target.value,
-    };
-  };
-
-  const filtered = event => {
-    dispatch(filterActual(event));
-  };
+  const filtered = event => dispatch(actual(event.target.value));
 
   return (
     <LabelFilterContact LabelFilter htmlFor={nanoid()}>
@@ -31,3 +23,10 @@ export const FilterCon = () => {
     </LabelFilterContact>
   );
 };
+
+// const filterActual = event => {
+//   return {
+//     type: 'filter/actual',
+//     payload: event.target.value,
+//   };
+// };

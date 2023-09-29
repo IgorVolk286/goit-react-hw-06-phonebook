@@ -13,12 +13,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
-
-  useEffect(() => {
-    localStorage.setItem('contactList', JSON.stringify(contacts));
-  }, [contacts]);
-
   return (
     <Layout>
       <Title>PHONEBOOK</Title>
@@ -31,3 +25,9 @@ export const App = () => {
     </Layout>
   );
 };
+
+// const contacts = useSelector(getContacts);
+
+// useEffect(() => {
+//   localStorage.setItem('contactList', JSON.stringify(contacts));
+// }, [contacts]);

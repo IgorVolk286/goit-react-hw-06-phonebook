@@ -1,19 +1,14 @@
-import { getContacts, getFilter } from 'Redux/selectors';
+import { getContacts } from '../../Redux/Contactsslice';
+import { getFilter } from '../../Redux/Filterslice';
 import { List, ListItem, Text, ButtonDelete } from './ContactList.styled';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteCont } from '../../Redux/Contactsslice';
 
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
   console.log(filter);
-
-  const deleteCont = id => {
-    return {
-      type: 'contacts/deleteCont',
-      payload: id,
-    };
-  };
 
   const visibleContact = contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -36,3 +31,12 @@ export const ContactList = () => {
     </List>
   );
 };
+
+// екшн для редакс\\\
+
+// const deleteCont = id => {
+//   return {
+//     type: 'contacts/deleteCont',
+//     payload: id,
+//   };
+// };
